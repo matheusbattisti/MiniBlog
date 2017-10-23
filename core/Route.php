@@ -8,11 +8,12 @@
 	{
 		protected function initRoutes() {
 			$routes['home'] = array('route'=>'/', 'controller'=>'IndexController', 'action'=>'index');
-			$routes['userlogin'] = array('route'=>'/user', 'controller'=>'UserController', 'action'=>'index');
-			$routes['login'] = array('route'=>'/user/login', 'controller'=>'UserController', 'action'=>'login');
-			$routes['register'] = array('route'=>'/user/register', 'controller'=>'UserController', 'action'=>'register');
+
 			$routes['admin'] = array('route'=>'/admin', 'controller'=>'AdminController', 'action'=>'index');
-			$routes['logout'] = array('route'=>'/logout', 'controller'=>'UserController', 'action'=>'logout');
+			$routes['adminlogin'] = array('route'=>'/admin/login', 'controller'=>'AdminController', 'action'=>'login');
+			$routes['adduser'] = array('route'=>'/admin/adduser', 'controller'=>'AdminController', 'action'=>'add');
+			$routes['edituser'] = array('route'=>'/admin/edituser', 'controller'=>'AdminController', 'action'=>'edit');
+			$routes['logout'] = array('route'=>'/admin/logout', 'controller'=>'AdminController', 'action'=>'logout');
 			$this->setRoutes($routes);
 		}
 	}

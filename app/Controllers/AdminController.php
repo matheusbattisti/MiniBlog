@@ -16,4 +16,9 @@
 			$this->render('index');
 		}
 
+		public function login() {
+			$this->render('login');
+		}
+
+
 	}

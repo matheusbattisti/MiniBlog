@@ -17,12 +17,24 @@
 		    session_start(); 
 		}
 
+
+		/**
+		* esta função libera as páginas se o id estiver setado ou for a pagina de login
+		*/
 		public static function checkSessionId() 
 		{	
-			$id = $_SESSION['user']['id'];
-			
-			if(!isset($id)) { 
-			    header("Location: /");
+			if(isset($_SESSION['user'])) {
+				$id = $_SESSION['user']['id'];
+			}
+
+			$url = $_SERVER['REQUEST_URI'];
+			$actualUrl = strrchr(parse_url($url, PHP_URL_PATH), '/');
+
+			if($actualUrl == '/login') { 
+			    return true;
+			    exit;
+			} else if(!isset($id)) {
+				header("Location: /admin/login");
 			}
 			
 		}
