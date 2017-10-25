@@ -4,20 +4,33 @@
 
 	use Core\Action;
 	use Core\Session;
+	use Core\DI\Container;
 
 	class AdminController extends Action
 	{
 
-		public function __construct() {
+		public function index() {
 			Session::checkSessionId();
+			$this->render('index');
 		}
 
-		public function index() {
-			$this->render('index');
+		public function listTeam() {
+			Session::checkSessionId();
+			$this->render('team');
+		}
+
+		public function add() {
+			Session::checkSessionId();
+			$this->render('adduser');
 		}
 
 		public function login() {
 			$this->render('login');
+		}
+
+		public function loginPost() {
+			$user = Container::getModel("User");
+			$user->authenticateUser($_POST);
 		}
 
 
