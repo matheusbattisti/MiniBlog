@@ -19,7 +19,7 @@
 
 		}
 
-		public function register() {
+		public function addPost() {
 
 			$user = Container::getModel("User");
 			$user->registerUser($_POST);

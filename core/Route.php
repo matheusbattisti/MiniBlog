@@ -14,10 +14,11 @@
 			$routes['adminloginpost'] = array('route'=>'/admin/login/post', 'controller'=>'AdminController', 'action'=>'loginPost');
 			$routes['team'] = array('route'=>'/admin/team', 'controller'=>'AdminController', 'action'=>'listTeam');
 			$routes['adduser'] = array('route'=>'/admin/team/adduser', 'controller'=>'AdminController', 'action'=>'add');
-			$routes['edituser'] = array('route'=>'/admin/team/edituser', 'controller'=>'AdminController', 'action'=>'edit');
-			$routes['edituser'] = array('route'=>'/admin/edituser', 'controller'=>'AdminController', 'action'=>'edit');
-			$routes['deleteuser'] = array('route'=>'/admin/deleteuser', 'controller'=>'AdminController', 'action'=>'delete');
-			$routes['logout'] = array('route'=>'/admin/logout', 'controller'=>'AdminController', 'action'=>'logout');
+
+			$routes['adduserpost'] = array('route'=>'/user/add/post', 'controller'=>'UserController', 'action'=>'addPost');			
+			$routes['edituser'] = array('route'=>'/user/edituser', 'controller'=>'UserController', 'action'=>'edit');
+			$routes['deleteuser'] = array('route'=>'/user/deleteuser', 'controller'=>'UserController', 'action'=>'delete');
+			$routes['logout'] = array('route'=>'/user/logout', 'controller'=>'UserController', 'action'=>'logout');
 			$this->setRoutes($routes);
 		}
 	}

@@ -66,8 +66,7 @@
 
 				if(!empty($userData)) {
 
-					//$checked = password_verify($userPass, $userData['senha']);
-					$checked = true;
+					$checked = password_verify($userPass, $userData['senha']);
 
 					if($checked) {
 						//caso o usuario autentique, limpa as mensagens
