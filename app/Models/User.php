@@ -20,6 +20,7 @@
 
 				$userName = addslashes($_POST['name']);
 				$userEmail = addslashes($_POST['email']);
+				$userNivel = $_POST['nivel'];
 				$userPass = $_POST['password'];
 				$userConfirmPass = $_POST['confirmpassword'];
 
@@ -29,7 +30,8 @@
 					$data = [
 						'email' => $userEmail,
 						'nome'  => $userName,
-						'senha' => password_hash($userPass, PASSWORD_DEFAULT, ['cost' => 12])
+						'senha' => password_hash($userPass, PASSWORD_DEFAULT, ['cost' => 12]),
+						'nivel'  => $userNivel,
 					];
 
 					$response = $this->insert($data);

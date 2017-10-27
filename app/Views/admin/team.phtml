@@ -2,8 +2,26 @@
 	<h1>Gerenciar Equipe</h1>
 	<a href="/admin/team/adduser" class="btn btn-default">Adicionar Membro</a>
 	<h3>Lista de Membros</h3>
-	<ul>
-		<li>Membro 1 <a class="btn btn-default" href="/admin/edituser">Editar</a> <a class="btn btn-danger" href="/admin/deleteuser">Deletar</a></li>
-		<li>Membro 2 <a class="btn btn-default" href="/admin/edituser">Editar</a> <a class="btn btn-danger" href="/admin/deleteuser">Deletar</a></li>
-	</ul>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome:</th>
+				<th>E-mail</th>
+				<th>Nivel</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($this->users as $user): ?>
+				<tr>
+					<td><?php echo $user['id']; ?></td>
+					<td><?php echo $user['nome']; ?></td>
+					<td><?php echo $user['email']; ?></td>
+					<td><?php echo $user['nivel']; ?></td>
+					<td><a class="btn btn-default" href="/admin/edituser">Editar</a> <a class="btn btn-danger" href="/admin/deleteuser">Deletar</a></td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
 </div>

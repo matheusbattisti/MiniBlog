@@ -15,7 +15,9 @@
 
 		public function fetchAll() {
 			$query = "SELECT * FROM {$this->table}";
-			return $this->db->query($query);
+			$stmt = $this->db->prepare($query);
+			$stmt->execute();
+			return $stmt->fetchAll();
 		}
 
 		public function find($id) {

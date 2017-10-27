@@ -16,6 +16,10 @@
 
 		public function listTeam() {
 			Session::checkSessionId();
+
+			$usersModel = Container::getModel("User");
+			$this->users = $usersModel->fetchAll();
+
 			$this->render('team');
 		}
 
