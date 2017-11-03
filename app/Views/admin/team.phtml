@@ -19,7 +19,7 @@
 					<td><?php echo $user['nome']; ?></td>
 					<td><?php echo $user['email']; ?></td>
 					<td><?php echo $user['nivel']; ?></td>
-					<td><a class="btn btn-default" href="/user/edituser?id=<?php echo $user['id']; ?>">Editar</a> <a class="btn btn-danger" href="/user/deleteuser?id=<?php echo $user['id']; ?>">Deletar</a></td>
+					<td><a class="btn btn-default" href="/admin/team/edituser?id=<?php echo $user['id']; ?>">Editar</a> <a class="btn btn-danger" href="/user/deleteuser?id=<?php echo $user['id']; ?>">Deletar</a></td>
 				</tr>
 			<?php endforeach ?>
 		</tbody>
