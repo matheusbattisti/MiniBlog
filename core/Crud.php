@@ -61,4 +61,13 @@
 			}
 		}
 
+		public function delete($id)
+		{
+			if(!empty($id) && $id != '') {
+				$sql = "DELETE FROM " . $this->table . " WHERE id = " . $id . " LIMIT 1";
+				$stmt = $this->db->prepare($sql);
+				$stmt->execute();
+			}
+		}
+
 	}

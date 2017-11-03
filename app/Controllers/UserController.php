@@ -3,6 +3,7 @@
 	namespace App\Controllers;
 
 	use Core\Action;
+	use Core\Session;
 	use Core\DI\Container;
 
 	class UserController extends Action
@@ -24,6 +25,16 @@
 			$user = Container::getModel("User");
 			$user->registerUser($_POST);
 			
+		}
+
+		public function deletePost() {
+			Session::checkSessionId();
+
+			$id = addslashes($_GET['id']);
+
+			$usersModel = Container::getModel("User");
+			$usersModel->deleteUser($id);
+
 		}
 
 		public function logout() {

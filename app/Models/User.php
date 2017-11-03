@@ -92,6 +92,22 @@
 			}
 		}
 
+
+		public function deleteUser($id)
+		{
+			if($id != '') {
+
+				$userId = $id;
+				$this->delete($id);
+				Messages::setMessage('success', 'Usuário deletado com sucesso!');
+				header('Location: /');
+
+			} else {
+				Messages::setMessage('warning', 'Houve algum problema ao deletar usuário!');
+				header('Location: /');
+			}
+		}
+
 		public function logout()
 		{
 			Session::destroySession();
@@ -99,4 +115,5 @@
 			header('Location: /');
 			exit;
 		}
+
 	}

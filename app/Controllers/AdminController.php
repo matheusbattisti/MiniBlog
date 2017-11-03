@@ -33,11 +33,6 @@
 			$this->render('edituser');
 		}
 
-		public function delete() {
-			Session::checkSessionId();
-			$this->render('deleteuser');
-		}
-
 		public function login() {
 			$this->render('login');
 		}
