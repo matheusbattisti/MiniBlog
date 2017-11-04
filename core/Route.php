@@ -17,7 +17,7 @@
 			$routes['edituser'] = array('route'=>'/admin/team/edituser', 'controller'=>'AdminController', 'action'=>'edit');
 
 			$routes['adduserpost'] = array('route'=>'/user/add/post', 'controller'=>'UserController', 'action'=>'addPost');			
-			$routes['edituserpost'] = array('route'=>'/user/edituser', 'controller'=>'UserController', 'action'=>'editPost');
+			$routes['edituserpost'] = array('route'=>'/user/edit/post', 'controller'=>'UserController', 'action'=>'editPost');
 			$routes['deleteuser'] = array('route'=>'/user/deleteuser', 'controller'=>'UserController', 'action'=>'deletePost');
 			$routes['logout'] = array('route'=>'/user/logout', 'controller'=>'UserController', 'action'=>'logout');
 			$this->setRoutes($routes);

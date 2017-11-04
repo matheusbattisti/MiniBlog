@@ -11,6 +11,21 @@
 
 		protected $table = "usuarios";
 
+
+		public function loadUser()
+		{
+
+			$userId = addslashes($_GET['id']);
+
+			if(!empty($userId) && $userId != '') {
+				return $this->find($userId);
+			} else {
+				Messages::setMessage('warning', 'Houve algum problema ao encontrar usuário!');
+				header('Location: /');
+			}
+
+		}
+
 		public function registerUser($data) {
 
 			$emailExists = $this->findByEmail($_POST['email']);
@@ -18,10 +33,10 @@
 			//checando se as variaveis vieram no post, e se o email ja existe no banco
 			if(isset($_POST['email']) && !empty($_POST['email']) && $emailExists == '') {
 
-				$userName = addslashes($_POST['name']);
-				$userEmail = addslashes($_POST['email']);
-				$userNivel = $_POST['nivel'];
-				$userPass = $_POST['password'];
+				$userName 		 = addslashes($_POST['name']);
+				$userEmail 		 = addslashes($_POST['email']);
+				$userNivel 		 = $_POST['nivel'];
+				$userPass 		 = $_POST['password'];
 				$userConfirmPass = $_POST['confirmpassword'];
 
 				//checando se a senha e a confirmação são iguais
@@ -92,6 +107,49 @@
 			}
 		}
 
+		public function edituser($data)
+		{
+
+			//checando se as variaveis vieram no post, e se o email ja existe no banco
+			if(isset($_POST['email']) && !empty($_POST['email'])) {
+
+				$id 			 = addslashes($_POST['id']);
+				$userName 		 = addslashes($_POST['name']);
+				$userEmail 		 = addslashes($_POST['email']);
+				$userNivel 		 = $_POST['nivel'];
+				$userPass 		 = $_POST['password'];
+				$userConfirmPass = $_POST['confirmpassword'];
+
+								//checando se a senha e a confirmação são iguais
+				if($userPass == $userConfirmPass && $userPass != '') {
+					
+					$data = [
+						'email' => $userEmail,
+						'nome'  => $userName,
+						'senha' => password_hash($userPass, PASSWORD_DEFAULT, ['cost' => 12]),
+						'nivel'  => $userNivel,
+					];
+
+					$response = $this->update($data, $id);
+
+					if($response == true) {
+
+						//caso o usuario registre, limpa as mensagens
+						Messages::setMessage('success', 'Usuário editado com sucesso!');
+						header('Location: /');
+					}
+
+
+				} else {
+					Messages::setMessage('warning', 'A senha e a confirmação de senha não estão iguais!');
+					header('Location: /');
+				}
+
+			} else {
+				Messages::setMessage('warning', 'O e-mail não pode ser vazio');
+				header('Location: /');
+			}
+		}
 
 		public function deleteUser($id)
 		{

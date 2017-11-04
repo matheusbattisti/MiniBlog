@@ -27,6 +27,11 @@
 			
 		}
 
+		public function editPost() {
+			$user = Container::getModel("User");
+			$user->editUser($_POST);
+		}
+
 		public function deletePost() {
 			Session::checkSessionId();
 

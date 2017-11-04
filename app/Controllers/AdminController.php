@@ -29,6 +29,10 @@
 		}
 
 		public function edit() {
+
+			$usersModel = Container::getModel("User");
+			$this->userInfo = $usersModel->loadUser();
+
 			Session::checkSessionId();
 			$this->render('edituser');
 		}

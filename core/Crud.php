@@ -61,6 +61,34 @@
 			}
 		}
 
+
+		public function update($data, $id)
+		{
+			if(!empty($this->table) && (is_array($data) && count($data) > 0)) {
+				$sql = "UPDATE " . $this->table . " SET ";
+				$dados = array();
+
+				foreach($data as $chave => $valor) {
+					$dados[] = $chave . " = " . ":" . $chave;
+				}
+
+				$sql .= implode(", ", $dados);
+
+				$sql .= " WHERE id = " . $id;
+
+				$stmt = $this->db->prepare($sql);
+
+				foreach ($data as $chave => $valor) {
+					$chaveValue = ":" . $chave;
+				    $stmt->bindValue($chaveValue , $valor);  // bind the value to the statement
+				}
+
+				$stmt->execute();
+
+				return true;
+			}
+		}
+
 		public function delete($id)
 		{
 			if(!empty($id) && $id != '') {
