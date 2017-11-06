@@ -113,35 +113,39 @@
 			//checando se as variaveis vieram no post, e se o email ja existe no banco
 			if(isset($_POST['email']) && !empty($_POST['email'])) {
 
-				$id 			 = addslashes($_POST['id']);
-				$userName 		 = addslashes($_POST['name']);
-				$userEmail 		 = addslashes($_POST['email']);
-				$userNivel 		 = $_POST['nivel'];
-				$userPass 		 = $_POST['password'];
-				$userConfirmPass = $_POST['confirmpassword'];
+				$id = addslashes($_POST['id']);
 
-								//checando se a senha e a confirmação são iguais
-				if($userPass == $userConfirmPass && $userPass != '') {
-					
-					$data = [
-						'email' => $userEmail,
-						'nome'  => $userName,
-						'senha' => password_hash($userPass, PASSWORD_DEFAULT, ['cost' => 12]),
-						'nivel'  => $userNivel,
-					];
+				$data = [];
 
-					$response = $this->update($data, $id);
+				if(isset($_POST['name'])) {
+					$userName 		 = addslashes($_POST['name']);
+					$data['nome'] = $userName;
+				}
+				if(isset($_POST['email'])) {
+					$userEmail 		 = addslashes($_POST['email']);
+					$data['email'] = $userEmail;
+				}
+				if(isset($_POST['nivel'])) {
+					$userNivel 		 = $_POST['nivel'];
+					$data['nivel'] = $userNivel;
+				}
+				if(isset($_POST['password']) && $_POST['password'] != '') {
+					$userPass 		 = $_POST['password'];
+					$userConfirmPass = $_POST['confirmpassword'];
 
-					if($response == true) {
-
-						//caso o usuario registre, limpa as mensagens
-						Messages::setMessage('success', 'Usuário editado com sucesso!');
-						header('Location: /');
+					if($userPass == $userConfirmPass) {
+						$userPassword = password_hash($userPass, PASSWORD_DEFAULT, ['cost' => 12]);
+						$data['senha'] = $userPassword;
 					}
 
+				}
 
-				} else {
-					Messages::setMessage('warning', 'A senha e a confirmação de senha não estão iguais!');
+				$response = $this->update($data, $id);
+
+				if($response == true) {
+
+					//caso o usuario registre, limpa as mensagens
+					Messages::setMessage('success', 'Usuário editado com sucesso!');
 					header('Location: /');
 				}
 
