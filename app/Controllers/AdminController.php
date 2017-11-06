@@ -46,5 +46,13 @@
 			$user->authenticateUser($_POST);
 		}
 
+		public function listPosts() {
+			Session::checkSessionId();
+
+			$postsModel = Container::getModel("Posts");
+			$this->posts = $postsModel->fetchAll();
+
+			$this->render('posts');
+		}
 
 	}

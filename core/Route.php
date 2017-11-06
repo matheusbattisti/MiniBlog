@@ -15,6 +15,7 @@
 			$routes['team'] = array('route'=>'/admin/team', 'controller'=>'AdminController', 'action'=>'listTeam');
 			$routes['adduser'] = array('route'=>'/admin/team/adduser', 'controller'=>'AdminController', 'action'=>'add');
 			$routes['edituser'] = array('route'=>'/admin/team/edituser', 'controller'=>'AdminController', 'action'=>'edit');
+			$routes['gerenciarposts'] = array('route'=>'/admin/posts', 'controller'=>'AdminController', 'action'=>'listPosts');
 
 			$routes['adduserpost'] = array('route'=>'/user/add/post', 'controller'=>'UserController', 'action'=>'addPost');			
 			$routes['edituserpost'] = array('route'=>'/user/edit/post', 'controller'=>'UserController', 'action'=>'editPost');
