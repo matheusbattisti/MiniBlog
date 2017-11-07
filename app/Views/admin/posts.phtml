@@ -17,7 +17,7 @@
 					<td><?php echo $post['id']; ?></td>
 					<td><?php echo $post['titulo']; ?></td>
 					<td><?php echo $post['data_criacao']; ?></td>
-					<td>asd</td>
+					<td><?php echo $post['username']; ?></td>
 					<td><a class="btn btn-default" href="/admin/team/edituser?id=<?php echo $user['id']; ?>">Editar</a> <a class="btn btn-danger" href="/user/deleteuser?id=<?php echo $user['id']; ?>">Deletar</a></td>
 				</tr>
 			<?php endforeach ?>

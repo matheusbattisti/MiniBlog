@@ -49,8 +49,23 @@
 		public function listPosts() {
 			Session::checkSessionId();
 
+			//get posts
 			$postsModel = Container::getModel("Posts");
 			$this->posts = $postsModel->fetchAll();
+
+			//get author
+			$i = 0;
+
+			foreach($this->posts as $post) {
+
+				$usersModel = Container::getModel("User");
+				$this->userInfo = $usersModel->find($post['id_usuario']);
+
+				$this->posts[$i] += ['username' => $this->userInfo['nome']];
+
+				$i++;
+
+			}
 
 			$this->render('posts');
 		}
