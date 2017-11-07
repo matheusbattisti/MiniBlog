@@ -1,1 +1,26 @@
 <h1>Gerenciar Posts</h1>
+	<a href="/admin/team/adduser" class="btn btn-default">Adicionar Post</a>
+	<h3>Lista de Membros</h3>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Titulo</th>
+				<th>Data de Criação</th>
+				<th>Autor</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($this->posts as $post): ?>
+				<tr>
+					<td><?php echo $post['id']; ?></td>
+					<td><?php echo $post['titulo']; ?></td>
+					<td><?php echo $post['data_criacao']; ?></td>
+					<td>asd</td>
+					<td><a class="btn btn-default" href="/admin/team/edituser?id=<?php echo $user['id']; ?>">Editar</a> <a class="btn btn-danger" href="/user/deleteuser?id=<?php echo $user['id']; ?>">Deletar</a></td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>
