@@ -1,5 +1,5 @@
 <h1>Gerenciar Posts</h1>
-	<a href="/admin/team/adduser" class="btn btn-default">Adicionar Post</a>
+	<a href="/admin/post/addpost" class="btn btn-default">Adicionar Post</a>
 	<h3>Lista de Membros</h3>
 	<table class="table table-striped">
 		<thead>
@@ -18,7 +18,7 @@
 					<td><?php echo $post['titulo']; ?></td>
 					<td><?php echo $post['data_criacao']; ?></td>
 					<td><?php echo $post['username']; ?></td>
-					<td><a class="btn btn-default" href="/admin/team/edituser?id=<?php echo $user['id']; ?>">Editar</a> <a class="btn btn-danger" href="/user/deleteuser?id=<?php echo $user['id']; ?>">Deletar</a></td>
+					<td><a class="btn btn-default" href="/admin/posts/editpost?id=<?php echo $post['id']; ?>">Editar</a> <a class="btn btn-danger" href="/posts/deletepost?id=<?php echo $post['id']; ?>">Deletar</a></td>
 				</tr>
 			<?php endforeach ?>
 		</tbody>

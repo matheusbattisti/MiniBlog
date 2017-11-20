@@ -70,4 +70,15 @@
 			$this->render('posts');
 		}
 
+		public function addPost() {
+			Session::checkSessionId();
+			$this->userId = $_SESSION['user']['id'];
+			$this->render('addpost');
+		}
+
+		public function postCreate() {
+			
+		}
+
+
 	}

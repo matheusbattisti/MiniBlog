@@ -17,9 +17,11 @@
 			$routes['edituser'] = array('route'=>'/admin/team/edituser', 'controller'=>'AdminController', 'action'=>'edit');
 			$routes['gerenciarposts'] = array('route'=>'/admin/posts', 'controller'=>'AdminController', 'action'=>'listPosts');
 
-			$routes['adduserpost'] = array('route'=>'/user/add/post', 'controller'=>'UserController', 'action'=>'addPost');			
-			$routes['edituserpost'] = array('route'=>'/user/edit/post', 'controller'=>'UserController', 'action'=>'editPost');
-			$routes['deleteuser'] = array('route'=>'/user/deleteuser', 'controller'=>'UserController', 'action'=>'deletePost');
+			$routes['addpost'] = array('route'=>'/admin/post/addpost', 'controller'=>'AdminController', 'action'=>'addPost');
+			$routes['addpostcreate'] = array('route'=>'/admin/postcreate', 'controller'=>'AdminController', 'action'=>'postCreate');						
+			$routes['edituserpost'] = array('route'=>'/user/edit/post', 'controller'=>'AdminController', 'action'=>'editPost');
+			$routes['deleteuser'] = array('route'=>'/user/deleteuser', 'controller'=>'AdminController', 'action'=>'deletePost');
+
 			$routes['logout'] = array('route'=>'/user/logout', 'controller'=>'UserController', 'action'=>'logout');
 			$this->setRoutes($routes);
 		}
