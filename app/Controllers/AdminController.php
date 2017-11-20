@@ -50,7 +50,7 @@
 			Session::checkSessionId();
 
 			//get posts
-			$postsModel = Container::getModel("Posts");
+			$postsModel = Container::getModel("Post");
 			$this->posts = $postsModel->fetchAll();
 
 			//get author
@@ -77,7 +77,8 @@
 		}
 
 		public function postCreate() {
-			
+			$post = Container::getModel("Post");
+			$post->createPost($_POST);
 		}
 
 
