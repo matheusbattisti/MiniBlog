@@ -30,10 +30,11 @@
 
 		public function edit() {
 
+			Session::checkSessionId();
+
 			$usersModel = Container::getModel("User");
 			$this->userInfo = $usersModel->loadUser();
-
-			Session::checkSessionId();
+			
 			$this->render('edituser');
 		}
 
@@ -71,15 +72,36 @@
 		}
 
 		public function addPost() {
+
 			Session::checkSessionId();
+
 			$this->userId = $_SESSION['user']['id'];
 			$this->render('addpost');
 		}
 
 		public function postCreate() {
+
+			Session::checkSessionId();
+
 			$post = Container::getModel("Post");
 			$post->createPost($_POST);
+
 		}
 
+		public function editPost()
+		{
+
+			Session::checkSessionId();
+
+			$postModel = Container::getModel("Post");
+			$this->postInfo = $postModel->loadPost();
+
+			$this->render('editpost');
+		}
+
+		public function postUpdate()
+		{
+			
+		}
 
 	}

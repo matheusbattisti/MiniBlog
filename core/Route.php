@@ -19,7 +19,8 @@
 
 			$routes['addpost'] = array('route'=>'/admin/post/addpost', 'controller'=>'AdminController', 'action'=>'addPost');
 			$routes['addpostcreate'] = array('route'=>'/admin/postcreate', 'controller'=>'AdminController', 'action'=>'postCreate');						
-			$routes['edituserpost'] = array('route'=>'/user/edit/post', 'controller'=>'AdminController', 'action'=>'editPost');
+			$routes['editpost'] = array('route'=>'/admin/post/editpost', 'controller'=>'AdminController', 'action'=>'editPost');
+			$routes['postupdate'] = array('route'=>'/admin/postupdate', 'controller'=>'AdminController', 'action'=>'postUpdate');
 			$routes['deleteuser'] = array('route'=>'/user/deleteuser', 'controller'=>'AdminController', 'action'=>'deletePost');
 
 			$routes['logout'] = array('route'=>'/user/logout', 'controller'=>'UserController', 'action'=>'logout');

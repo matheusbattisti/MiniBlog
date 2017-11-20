@@ -18,7 +18,7 @@
 					<td><?php echo $post['titulo']; ?></td>
 					<td><?php echo $post['data_criacao']; ?></td>
 					<td><?php echo $post['username']; ?></td>
-					<td><a class="btn btn-default" href="/admin/posts/editpost?id=<?php echo $post['id']; ?>">Editar</a> <a class="btn btn-danger" href="/posts/deletepost?id=<?php echo $post['id']; ?>">Deletar</a></td>
+					<td><a class="btn btn-default" href="/admin/post/editpost?id=<?php echo $post['id']; ?>">Editar</a> <a class="btn btn-danger" href="/post/deletepost?id=<?php echo $post['id']; ?>">Deletar</a></td>
 				</tr>
 			<?php endforeach ?>
 		</tbody>

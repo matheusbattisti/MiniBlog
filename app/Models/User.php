@@ -26,7 +26,7 @@
 
 		}
 
-		public function registerUser($data) {
+		public function registerUser($data) {	
 
 			$emailExists = $this->findByEmail($_POST['email']);
 
