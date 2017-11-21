@@ -92,4 +92,19 @@
 			}
 		}
 
+		public function deletePost($id)
+		{
+			if($id != '') {
+
+				$userId = $id;
+				$this->delete($id);
+				Messages::setMessage('success', 'Post deletado com sucesso!');
+				header('Location: /');
+
+			} else {
+				Messages::setMessage('warning', 'Houve algum problema ao deletar o post!');
+				header('Location: /');
+			}
+		}
+
 	}

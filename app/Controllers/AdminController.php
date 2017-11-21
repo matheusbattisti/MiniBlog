@@ -107,4 +107,14 @@
 			$post->updatePost($_POST);
 		}
 
+		public function deletePost()
+		{
+			Session::checkSessionId();
+
+			$id = addslashes($_GET['id']);
+
+			$post = Container::getModel("Post");
+			$post->deletePost($id);
+		}
+
 	}
