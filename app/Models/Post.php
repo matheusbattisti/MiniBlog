@@ -11,6 +11,19 @@
 
 		protected $table = "posts";
 
+		public function findAll()
+		{
+			return $this->fetchAll();
+		}
+
+		public function lastPosts() {
+
+			$query = "SELECT * FROM {$this->table} ORDER BY data_criacao LIMIT 3";
+			$stmt = $this->db->prepare($query);
+			$stmt->execute();
+			return $stmt->fetchAll();
+		}
+
 		public function loadPost()
 		{
 
@@ -39,7 +52,7 @@
 						'titulo' => $postTitle,
 						'texto'  => $postContent,
 						'id_usuario'  => $userId,
-						'data_criacao' => date("D M d, Y G:i"),
+						'data_criacao' => date("Y-m-d H:i:s"),
 					];
 
 					$response = $this->insert($data);
@@ -48,12 +61,12 @@
 
 						//caso o usuario registre, limpa as mensagens
 						Messages::setMessage('success', 'Post cadastrado com sucesso!');
-						header('Location: /');
+						header('Location: /admin/posts');
 					}
 
 			} else {
 				Messages::setMessage('warning', 'Dados incompletos, por favor crie novamente o post');
-				header('Location: /');
+				header('Location: /admin/posts');
 			}
 
 		}
@@ -83,12 +96,12 @@
 
 					//caso o usuario registre, limpa as mensagens
 					Messages::setMessage('success', 'Post editado com sucesso!');
-					header('Location: /');
+					header('Location: /admin/posts');
 				}
 
 			} else {
 				Messages::setMessage('warning', 'O título não pode ser vazio');
-				header('Location: /');
+				header('Location: /admin/posts');
 			}
 		}
 
@@ -99,11 +112,11 @@
 				$userId = $id;
 				$this->delete($id);
 				Messages::setMessage('success', 'Post deletado com sucesso!');
-				header('Location: /');
+				header('Location: /admin/posts');
 
 			} else {
 				Messages::setMessage('warning', 'Houve algum problema ao deletar o post!');
-				header('Location: /');
+				header('Location: /admin/posts');
 			}
 		}
 
