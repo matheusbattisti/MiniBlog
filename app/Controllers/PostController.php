@@ -9,4 +9,17 @@
 	class PostController extends Action
 	{
 
+		public function postView()
+		{
+
+			$post = Container::getModel("Post");
+			$this->postView = $post->loadPost();
+
+			$user = Container::getModel("User");
+			$this->postAuthor = $user->loadUserById($this->postView['id_usuario']);
+
+			$this->render('post');
+
+		}
+
 	}

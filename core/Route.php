@@ -9,6 +9,8 @@
 		protected function initRoutes() {
 			$routes['home'] = array('route'=>'/', 'controller'=>'IndexController', 'action'=>'index');
 
+			$routes['postview'] = array('route'=>'/post/view', 'controller'=>'PostController', 'action'=>'postView');
+
 			$routes['admin'] = array('route'=>'/admin', 'controller'=>'AdminController', 'action'=>'index');
 			$routes['adminlogin'] = array('route'=>'/admin/login', 'controller'=>'AdminController', 'action'=>'login');
 			$routes['adminloginpost'] = array('route'=>'/admin/login/post', 'controller'=>'AdminController', 'action'=>'loginPost');

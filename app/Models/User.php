@@ -26,6 +26,20 @@
 
 		}
 
+		public function loadUserById($id)
+		{
+
+			$userId = $id;
+
+			if(!empty($userId) && $userId != '') {
+				return $this->find($userId);
+			} else {
+				Messages::setMessage('warning', 'Houve algum problema ao encontrar usuário!');
+				header('Location: /');
+			}
+
+		}
+
 		public function registerUser($data) {	
 
 			$emailExists = $this->findByEmail($_POST['email']);
