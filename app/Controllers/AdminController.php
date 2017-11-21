@@ -101,7 +101,10 @@
 
 		public function postUpdate()
 		{
-			
+			Session::checkSessionId();
+
+			$post = Container::getModel("Post");
+			$post->updatePost($_POST);
 		}
 
 	}

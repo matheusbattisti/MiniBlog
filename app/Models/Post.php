@@ -61,6 +61,35 @@
 		public function updatePost()
 		{
 
+			//checando se as variaveis vieram no post, e se o email ja existe no banco
+			if(isset($_POST['titulo']) && !empty($_POST['titulo'])) {
+
+				$id = addslashes($_POST['post_id']);
+
+				$data = [];
+
+				if(isset($_POST['titulo'])) {
+					$userName 		 = addslashes($_POST['titulo']);
+					$data['titulo'] = $userName;
+				}
+				if(isset($_POST['texto'])) {
+					$userEmail 		 = addslashes($_POST['texto']);
+					$data['texto'] = $userEmail;
+				}
+
+				$response = $this->update($data, $id);
+
+				if($response == true) {
+
+					//caso o usuario registre, limpa as mensagens
+					Messages::setMessage('success', 'Post editado com sucesso!');
+					header('Location: /');
+				}
+
+			} else {
+				Messages::setMessage('warning', 'O título não pode ser vazio');
+				header('Location: /');
+			}
 		}
 
 	}
