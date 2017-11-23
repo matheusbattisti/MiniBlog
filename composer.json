@@ -4,5 +4,8 @@
 			"App\\" : "app/",
 			"Core\\" : "core/"
 		}
+	},
+	"require": {
+		"doctrine/orm": "2.5.*"
 	}
 }
